@@ -2,17 +2,16 @@ import React from "react";
 
 //styles
 
-import styles from "../styles";
-
 //items list
 import products from "../items";
 import BoxProduct from "./BoxProduct";
+import { ListWrapper } from "../styles";
 
 const ProductList = () => {
   const itemsList = products.map((product) => (
     <BoxProduct product={product} key={products.id} />
   ));
-  return <div style={styles.list}>{itemsList}</div>;
+  return <ListWrapper>{itemsList}</ListWrapper>;
 };
 
 export default ProductList;

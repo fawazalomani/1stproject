@@ -1,3 +1,29 @@
+import styled from "styled-components";
+
+const Title = styled.h1`
+  text-align: center;
+  color: blue;
+`;
+
+const Description = styled.h3`
+  text-align: center;
+  color: red;
+`;
+
+const ShopImage = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export { Title, Description, ShopImage, ListWrapper };
+
+const ListWrapper = styled.div`
+  aligin-items: center;
+  justify-content: center;
+  display: flex;
+`;
+
 const styles = {
   text: {
     textAlign: "center",
