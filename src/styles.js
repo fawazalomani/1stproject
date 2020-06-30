@@ -3,13 +3,13 @@ const styles = {
     textAlign: "center",
   },
 
-  shopimage: {
+  shopImage: {
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
   },
 
-  prodimag: {
+  prodImage: {
     width: "200px",
     height: "200px",
   },
