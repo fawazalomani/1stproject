@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled,{createGlobalStyle} from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+
+body{
+
+background-color: ${(props => props.theme.backgroundColor)};
+}
+
+
+`
+
 
 const Title = styled.h1`
   text-align: center;
@@ -16,13 +27,32 @@ const ShopImage = styled.img`
   margin-right: auto;
 `;
 
-export { Title, Description, ShopImage, ListWrapper };
-
 const ListWrapper = styled.div`
-  aligin-items: center;
+  align-items: center;
   justify-content: center;
   display: flex;
+
+  margin: 30px;
+  img {
+
+    width:200px;
+    height:200px;
+  }
+p{
+
+  text-align: center;
+
+  &.price {
+
+    color:${(props) => props.theme.backgroundColor};
+  }
+}
+
 `;
+
+export { Title, Description, ShopImage, ListWrapper,GlobalStyle };
+
+
 
 const styles = {
   text: {

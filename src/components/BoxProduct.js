@@ -6,10 +6,9 @@ const BoxProduct = (props) => {
       <img
         src={props.product.image}
         alt={props.product.name}
-        style={styles.prodImage}
       />
-      <p style={styles.text}>{props.product.name}</p>
-      <p style={styles.text}> {props.product.price} KD</p>
+      <p>{props.product.name}</p>
+      <p className="price"> {props.product.price} KD</p>
     </div>
   );
 };
