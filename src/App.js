@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 
 // components
-import ProdutList from "./components/ProdutList";
+import ProductList from "./components/ProductList";
+//data
 
 //styles
 import styles from "./styles";
@@ -18,7 +19,7 @@ function App() {
         />
         <h1 style={styles.text}>Welone to our Shop</h1>
       </div>
-      <ProdutList />
+      <ProductList />
     </div>
   );
 }
