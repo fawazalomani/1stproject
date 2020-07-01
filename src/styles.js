@@ -1,15 +1,37 @@
-import styled,{createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
 body{
 
-background-color: ${(props => props.theme.backgroundColor)};
+background-color: ${(props) => props.theme};
 }
 
 
-`
+`;
 
+const theme = {
+  light: {
+    maincolor: "black ",
+    backgroundColor: "white",
+    green: "black",
+  },
+
+  dark: {
+    maincolor: "white ",
+    backgroundColor: "black",
+    green: "white",
+  },
+};
+
+const ThemeButton = styled.button`
+  font-size: 1em;
+  nargin: 1.25em;
+  padding: 0.25em 1 em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.maincolor};
+  color: ${(props) => props.theme.backgroundColor};
+`;
 
 const Title = styled.h1`
   text-align: center;
@@ -34,25 +56,27 @@ const ListWrapper = styled.div`
 
   margin: 30px;
   img {
-
-    width:200px;
-    height:200px;
+    width: 200px;
+    height: 200px;
   }
-p{
+  p {
+    text-align: center;
 
-  text-align: center;
-
-  &.price {
-
-    color:${(props) => props.theme.backgroundColor};
+    &.price {
+      color: ${(props) => props.theme.light};
+    }
   }
-}
-
 `;
 
-export { Title, Description, ShopImage, ListWrapper,GlobalStyle };
-
-
+export {
+  Title,
+  Description,
+  ShopImage,
+  ListWrapper,
+  GlobalStyle,
+  ThemeButton,
+  theme,
+};
 
 const styles = {
   text: {
