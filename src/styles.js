@@ -24,6 +24,10 @@ const theme = {
   },
 };
 
+const DeleteButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+`;
+
 const ThemeButton = styled.button`
   font-size: 1em;
   nargin: 1.25em;
@@ -59,12 +63,11 @@ const ListWrapper = styled.div`
     width: 200px;
     height: 200px;
   }
+  ,
   p {
     text-align: center;
-
-    &.price {
-      color: ${(props) => props.theme.light};
-    }
+    justify-content: center;
+    display: flex;
   }
 `;
 
@@ -76,33 +79,7 @@ export {
   GlobalStyle,
   ThemeButton,
   theme,
+  DeleteButtonStyled,
 };
 
-const styles = {
-  text: {
-    textAlign: "center",
-  },
-
-  shopImage: {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-
-  prodImage: {
-    width: "200px",
-    height: "200px",
-  },
-
-  list: {
-    alignitems: "center",
-    justifyContent: "center",
-    display: "flex",
-  },
-
-  photmar: {
-    margin: "30px",
-  },
-};
-
-export default styles;
+export default styled;

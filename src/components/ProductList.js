@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //styles
 
@@ -8,8 +8,16 @@ import BoxProduct from "./BoxProduct";
 import { ListWrapper } from "../styles";
 
 const ProductList = () => {
-  const itemsList = products.map((product) => (
-    <BoxProduct product={product} key={products.id} />
+  const [_products, setProducts] = useState(products);
+
+  const deleteItem = (productsId) => {
+    const updatedproducts = _products.filter(
+      (product) => product.id !== productsId
+    );
+    setProducts(updatedproducts);
+  };
+  const itemsList = _products.map((product) => (
+    <BoxProduct product={product} deleteItem={deleteItem} key={product.id} />
   ));
   return <ListWrapper>{itemsList}</ListWrapper>;
 };

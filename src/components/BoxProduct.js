@@ -1,12 +1,17 @@
 import React from "react";
-import styles from "../styles";
+import { ListWrapper, DeleteButtonStyled } from "../styles";
 const BoxProduct = (props) => {
+  const product = props.product;
+  const handleDelete = () => {
+    props.deleteItem(product.id);
+  };
   return (
-    <div style={styles.photmar} key={props.id}>
-      <img src={props.product.image} alt={props.product.name} />
-      <p>{props.product.name}</p>
-      <p className="price"> {props.product.price}</p>
-    </div>
+    <ListWrapper>
+      <img src={product.image} alt={product.id} />
+      <p>{product.name}</p>
+      <p className="price"> {product.price}</p>
+      <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
+    </ListWrapper>
   );
 };
 
