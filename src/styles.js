@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+import { Link } from "react-router-dom";
+
+export const GlobalStyle = createGlobalStyle`
 
 body{
 
@@ -10,7 +12,24 @@ background-color: ${(props) => props.theme};
 
 `;
 
-const theme = {
+export const Logo = styled(Link)`
+
+padding : 0.90em;
+
+img{
+  width:20%;
+}
+
+
+
+
+`
+
+
+
+
+
+export const theme = {
   light: {
     maincolor: "black ",
     backgroundColor: "white",
@@ -23,12 +42,42 @@ const theme = {
     green: "white",
   },
 };
+export const DetailWrapper = styled.div`
 
-const DeleteButtonStyled = styled.p`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+
+  img {
+    width: 40%;
+    float: left;
+
+  }
+
+  p {
+    vertical-align: middle;
+  }
+`;
+export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
 
-const ThemeButton = styled.button`
+
+
+export const Searchbarstyled = styled.input`
+padiing : 0.5 rem;
+margin:1rem auto;
+display: block;
+width: 40%;
+color : blue;
+`;
+
+
+
+
+export const ThemeButton = styled.button`
   font-size: 1em;
   nargin: 1.25em;
   padding: 0.25em 1 em;
@@ -37,49 +86,35 @@ const ThemeButton = styled.button`
   color: ${(props) => props.theme.backgroundColor};
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   color: blue;
 `;
 
-const Description = styled.h3`
+export const Description = styled.h3`
   text-align: center;
   color: red;
 `;
 
-const ShopImage = styled.img`
+export const ShopImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
 `;
 
-const ListWrapper = styled.div`
+export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
-
   margin: 30px;
+
   img {
     width: 200px;
     height: 200px;
   }
-  ,
   p {
-    text-align: center;
-    justify-content: center;
-    display: flex;
+    vertical-align: middle;
   }
 `;
-
-export {
-  Title,
-  Description,
-  ShopImage,
-  ListWrapper,
-  GlobalStyle,
-  ThemeButton,
-  theme,
-  DeleteButtonStyled,
-};
 
 export default styled;

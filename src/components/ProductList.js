@@ -3,23 +3,33 @@ import React, { useState } from "react";
 //styles
 
 //items list
-import products from "../items";
 import BoxProduct from "./BoxProduct";
 import { ListWrapper } from "../styles";
+import SearchBar from "./SearchBar";
 
-const ProductList = () => {
-  const [_products, setProducts] = useState(products);
 
-  const deleteItem = (productsId) => {
-    const updatedproducts = _products.filter(
-      (product) => product.id !== productsId
-    );
-    setProducts(updatedproducts);
-  };
-  const itemsList = _products.map((product) => (
-    <BoxProduct product={product} deleteItem={deleteItem} key={product.id} />
-  ));
-  return <ListWrapper>{itemsList}</ListWrapper>;
+
+
+const ProductList = (props) => {
+
+  const [query, setQuery] = useState("");
+
+  const filteredproduct = props.products.filter((product) => product.name.toLowerCase().includes(query.toLocaleLowerCase()))
+
+    .map((product) => (
+      <BoxProduct
+        product={product}
+        deleteItem={props.deleteItem}
+        selectVisible={props.selectVisible}
+        key={product.id}
+      />
+    ));
+
+  return (
+    <>
+      <SearchBar setQuery={setQuery} />
+      <ListWrapper>{filteredproduct}</ListWrapper>;
+    </>);
 };
 
 export default ProductList;
