@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 import { ListWrapper } from "../styles";
 import DeleteButton from "./DeleteButton";
 import { Link } from "react-router-dom";
@@ -11,9 +12,9 @@ const BoxProduct = ({ product, deleteItem }) => {
       </Link>
       <p>{product.name}</p>
       <p className="product-price"> {product.price}</p>
-      <DeleteButton productId={product.id} deleteItem={deleteItem} />
+      <DeleteButton productId={product.id} />
     </ListWrapper>
   );
 };
 
-export default BoxProduct;
+export default observer(BoxProduct);

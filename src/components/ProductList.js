@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react";
 
 //styles
 
@@ -7,16 +8,13 @@ import BoxProduct from "./BoxProduct";
 import { ListWrapper } from "../styles";
 import SearchBar from "./SearchBar";
 import AddButton from "./Buttons/AddButton";
+// stores
+import productStore from "../stores/productStore";
 
-const ProductList = ({
-  products,
-  createProduct,
-  deleteItem,
-  selectVisible,
-}) => {
+const ProductList = ({ createProduct, selectVisible }) => {
   const [query, setQuery] = useState("");
 
-  const filteredproduct = products
+  const ProductList = productStore.products
     .filter((product) =>
       product.name.toLowerCase().includes(query.toLocaleLowerCase())
     )
@@ -24,7 +22,6 @@ const ProductList = ({
     .map((product) => (
       <BoxProduct
         product={product}
-        deleteItem={deleteItem}
         selectVisible={selectVisible}
         key={product.id}
       />
@@ -33,10 +30,10 @@ const ProductList = ({
   return (
     <div>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{filteredproduct}</ListWrapper>;
+      <ListWrapper>{ProductList}</ListWrapper>;
       <AddButton createProduct={createProduct} />
     </div>
   );
 };
 
-export default ProductList;
+export default observer(ProductList);

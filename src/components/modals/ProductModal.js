@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import productStore from "../../stores/productStore";
 
 import Modal from "react-modal";
 import { CreateButtonStyled } from "../../styles";
@@ -13,7 +14,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-const ProductModal = ({ isOpen, closeModal, createProduct }) => {
+const ProductModal = ({ isOpen, closeModal }) => {
   const [product, setProduct] = useState({
     name: "",
     price: 0,
@@ -26,7 +27,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    createProduct(product);
+    productStore.createProduct(product);
     closeModal();
   };
 
@@ -74,7 +75,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
           <label>Image</label>
           <input
             name="image "
-            type="img"
+            type="text"
             onChange={handleChange}
             className="form-control"
           />

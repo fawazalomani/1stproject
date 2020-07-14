@@ -1,14 +1,9 @@
 import React from "react";
 import { DeleteButtonStyled } from "../styles";
-import { useHistory } from "react-router-dom";
+import productStore from "../stores/productStore";
 
-const DeleteButton = (props) => {
-  const history = useHistory();
-
-  const handleDelete = () => {
-    props.deleteItem(props.productId);
-    history.push("/products");
-  };
+const DeleteButton = ({ productId }) => {
+  const handleDelete = () => productStore.deleteItem(productId);
 
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
 };
