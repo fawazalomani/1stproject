@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import slugify from "react-slugify";
 import products from "./items";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+//  const buttonText = currentTheme === "light" ? "Dark Mode" : "Light Mode";
+//        buttonText={buttonText}
 // components
 import ProductList from "./components/ProductList";
 
 // ItemsDetail
 import ItemsDetail from "./components/ItemsDetail";
 //styles
-import {
-  GlobalStyle,
-} from "./styles";
+import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 import Home from "./components/Home";
 import { Route, Switch } from "react-router";
@@ -33,57 +33,48 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
 
-  const [visible, umVisible] = useState(null);
-  const [product, umproduct] = useState(products);
-
   const [_products, setProducts] = useState(products);
+
+  const createProduct = (newProduct) => {
+    const updatedproducts = [..._products, newProduct];
+    newProduct.id = _products[_products.length - 1].id + 1;
+    newProduct.slug = slugify(newProduct.name);
+
+    setProducts(updatedproducts);
+  };
 
   const deleteItem = (productsId) => {
     const updatedproducts = _products.filter(
       (product) => product.id !== productsId
     );
     setProducts(updatedproducts);
-
-  };
-
-  const selectVisible = (prodectid) => {
-    const selectVisible = products.find((product) => product.id === prodectid);
-    umproduct(selectVisible);
-    umVisible(!visible);
   };
 
   const handleToggle = () =>
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
-  const buttonText = currentTheme === "light" ? "Dark Mode" : "Light Mode";
 
   return (
-    <ThemeProvider theme={currentTheme === "light" ? theme.light : theme.dark}>
+    <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <NavBar handleToggle={handleToggle} setCurrentTheme={setCurrentTheme} buttonText={buttonText} />
+      <NavBar handleToggle={handleToggle} setCurrentTheme={setCurrentTheme} />
 
       <Switch>
+        <Route path="/products/:productSlug">
+          <ItemsDetail products={_products} deleteItem={deleteItem} />
+        </Route>
         <Route path="/products">
-          {visible ? (
-            <ItemsDetail product={product} deleteItem={deleteItem} selectVisible={selectVisible} />
-          ) : (
-              <ProductList products={_products} deleteItem={deleteItem} selectVisible={selectVisible} />
-            )}
-
+          <ProductList
+            products={_products}
+            createProduct={createProduct}
+            deleteItem={deleteItem}
+          />
         </Route>
         <Route path="/">
           <Home />
         </Route>
-
-        <Route path="/products/:productId">
-          <ItemsDetail product={product} deleteItem={deleteItem} />
-
-        </Route>
-
       </Switch>
-
     </ThemeProvider>
   );
 }
 
 export default App;
-

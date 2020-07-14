@@ -13,21 +13,22 @@ background-color: ${(props) => props.theme};
 `;
 
 export const Logo = styled(Link)`
+  padding: 0.9em;
 
-padding : 0.90em;
+  img {
+    width: 20%;
+  }
+`;
 
-img{
-  width:20%;
-}
+export const CreateButtonStyled = styled.button`
+  color: black,
+  background-color: ${(props) => props.theme.mainColor};
 
-
-
-
-`
-
-
-
-
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
 
 export const theme = {
   light: {
@@ -43,17 +44,14 @@ export const theme = {
   },
 };
 export const DetailWrapper = styled.div`
-
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
 
-
   img {
     width: 40%;
     float: left;
-
   }
 
   p {
@@ -64,18 +62,13 @@ export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
 
-
-
 export const Searchbarstyled = styled.input`
-padiing : 0.5 rem;
-margin:1rem auto;
-display: block;
-width: 40%;
-color : blue;
+  padiing: 0.5 rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+  color: blue;
 `;
-
-
-
 
 export const ThemeButton = styled.button`
   font-size: 1em;

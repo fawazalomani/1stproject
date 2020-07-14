@@ -4,7 +4,7 @@ const products = [
     name: "Tool Box",
     price: "36 KD",
     description: "Empty Tool Box",
-    slug: "Tool Box",
+    slug: "tool-box",
     image:
       "https://static01.nyt.com/images/2017/05/21/realestate/21FIX1/21FIX1-superJumbo.jpg",
   },
@@ -12,7 +12,7 @@ const products = [
     id: 2,
     name: "Phones",
     price: "210 KD",
-    slug: "Phones",
+    slug: "phones",
     description: "Black Iphone",
 
     image:
