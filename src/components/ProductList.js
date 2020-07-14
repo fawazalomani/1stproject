@@ -11,7 +11,7 @@ import AddButton from "./Buttons/AddButton";
 // stores
 import productStore from "../stores/productStore";
 
-const ProductList = ({ createProduct, selectVisible }) => {
+const ProductList = ({ selectVisible }) => {
   const [query, setQuery] = useState("");
 
   const ProductList = productStore.products
@@ -30,8 +30,8 @@ const ProductList = ({ createProduct, selectVisible }) => {
   return (
     <div>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{ProductList}</ListWrapper>;
-      <AddButton createProduct={createProduct} />
+      <ListWrapper>{ProductList}</ListWrapper>
+      <AddButton />
     </div>
   );
 };

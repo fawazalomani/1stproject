@@ -11,6 +11,20 @@ class ProductStore {
     newProduct.slug = slugify(newProduct.name);
     this.products.push(newProduct);
   };
+
+  updateProduct = (updateProduct) => {
+    const product = this.product.find(
+      (product) => product.id === updateProduct.id
+    );
+
+    //product.name = updateProduct.name;
+    //product.price = updateProduct.price;
+    //product.image = updateProduct.image;
+    //product.description = updateProduct.description;
+
+    for (const key in product) product[key] = updateProduct[key];
+  };
+
   deleteItem = (productsId) => {
     this.products = this.products.filter(
       (product) => product.id !== productsId

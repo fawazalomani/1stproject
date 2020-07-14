@@ -14,19 +14,31 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-const ProductModal = ({ isOpen, closeModal }) => {
-  const [product, setProduct] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  });
+const ProductModal = ({ isOpen, closeModal, oldproduct }) => {
+  const [product, setProduct] = useState(
+    oldproduct ?? {
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+  );
+
+  //name: oldproduct ? oldproduct.name : "",
+  //price: oldproduct ? oldproduct.price : 0,
+  //description: oldproduct ? oldproduct.description : "",
+  //image: oldproduct ? oldproduct.image : "",
+  //});
   const handleChange = (event) => {
     const newProduct = { ...product, [event.target.name]: event.target.value };
     setProduct(newProduct);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    //oldProduct ? productStore.updateProduct(product)
+    //:productStore.createProduct(product);
+    // why this not work?
     productStore.createProduct(product);
     closeModal();
   };
@@ -49,6 +61,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
               type="text"
               onChange={handleChange}
               className="form-control"
+              value={product.name}
             />
           </div>
           <div className="col-6">
@@ -59,6 +72,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
               min="1"
               onChange={handleChange}
               className="form-control"
+              value={product.price}
             />
           </div>
         </div>
@@ -69,6 +83,7 @@ const ProductModal = ({ isOpen, closeModal }) => {
             type="text"
             onChange={handleChange}
             className="form-control"
+            value={product.description}
           />
         </div>
         <div className="form-group">
@@ -78,9 +93,13 @@ const ProductModal = ({ isOpen, closeModal }) => {
             type="text"
             onChange={handleChange}
             className="form-control"
+            value={product.image}
           />
         </div>
-        <CreateButtonStyled>Create</CreateButtonStyled>
+        <CreateButtonStyled>
+          {" "}
+          {oldproduct ? "Update" : "create"}
+        </CreateButtonStyled>
       </form>
     </Modal>
   );

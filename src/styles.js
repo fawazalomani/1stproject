@@ -44,18 +44,24 @@ export const theme = {
   },
 };
 export const DetailWrapper = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+  margin: 20px;
 
   img {
-    width: 40%;
-    float: left;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
 
   p {
-    vertical-align: middle;
+    text-align: center;
+
+    &.cookie-price {
+      color: ${(props) => props.theme.red};
+    }
   }
 `;
 export const DeleteButtonStyled = styled.p`
@@ -96,18 +102,32 @@ export const ShopImage = styled.img`
 `;
 
 export const ListWrapper = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin: 30px;
+  margin: 20px;
 
   img {
     width: 200px;
     height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
+
   p {
-    vertical-align: middle;
+    text-align: center;
+
+    &.cookie-price {
+      color: ${(props) => props.theme.red};
+    }
   }
 `;
 
 export default styled;
+
+export const UpdateButtonStyled = styled.p`
+
+color : $(props)=> props.them.blue};
+
+
+`;

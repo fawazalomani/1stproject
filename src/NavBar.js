@@ -35,9 +35,6 @@ const NavBar = (props) => {
             {" "}
             {props.buttonText}
           </ThemeButton>
-          <li class="nav-item active"></li>
-          <li className="nav-item"></li>
-          <li classN="nav-item"></li>
         </ul>
       </div>
     </nav>
