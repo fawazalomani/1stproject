@@ -1,11 +1,18 @@
 import { decorate, observable } from "mobx";
 import slugify from "react-slugify";
+import axios from "axios";
 
 //data
-import products from "../items";
 
 class ProductStore {
-  products = products;
+  products = [];
+
+  fetchProducts = async () => {
+    const res = await axios.get("http://localhost:8000/products");
+    console.log("ProductStore->fetchProducts->res", res);
+    this.products = res.data;
+  };
+
   createProduct = (newProduct) => {
     newProduct.id = this.products[this.products.length - 1].id + 1;
     newProduct.slug = slugify(newProduct.name);
@@ -37,5 +44,6 @@ decorate(ProductStore, {
 });
 
 const productStore = new ProductStore();
+productStore.fetchProducts();
 
 export default productStore;

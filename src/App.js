@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import products from "./items";
 import "bootstrap/dist/css/bootstrap.min.css";
 //  const buttonText = currentTheme === "light" ? "Dark Mode" : "Light Mode";
 //        buttonText={buttonText}
@@ -34,7 +33,7 @@ function App() {
 
   const handleToggle = () =>
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
-
+  const products = [];
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
