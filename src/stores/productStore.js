@@ -1,5 +1,4 @@
 import { decorate, observable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
 
 //data
@@ -25,17 +24,20 @@ class ProductStore {
     }
   };
 
-  updateProduct = (updateProduct) => {
-    const product = this.product.find(
-      (product) => product.id === updateProduct.id
-    );
+  updateProduct = async (updateProduct) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/products/${updateProduct.id}`,
+        updateProduct
+      );
+      const product = this.products.find(
+        (product) => product.id === updateProduct.id
+      );
 
-    //product.name = updateProduct.name;
-    //product.price = updateProduct.price;
-    //product.image = updateProduct.image;
-    //product.description = updateProduct.description;
-
-    for (const key in product) product[key] = updateProduct[key];
+      for (const key in updateProduct) product[key] = updateProduct[key];
+    } catch (error) {
+      console.log("ProductStore->updateProduct->error", error);
+    }
   };
 
   deleteItem = async (productId) => {
