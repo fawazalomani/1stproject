@@ -16,9 +16,8 @@ const ProductList = ({ selectVisible }) => {
 
   const ProductList = productStore.products
     .filter((product) =>
-      product.name.toLowerCase().includes(query.toLocaleLowerCase())
+      product.name.toLowerCase().includes(query.toLowerCase())
     )
-
     .map((product) => (
       <BoxProduct
         product={product}
